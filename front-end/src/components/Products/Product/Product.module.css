@@ -1,0 +1,42 @@
+.product {
+  width: 25%;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  margin: 1.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.product > img {
+  width: 100%;
+}
+
+.product > a {
+  margin: 0.6rem 0;
+  text-decoration: none;
+  color: black;
+}
+
+.product > a:hover {
+  text-decoration: underline;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 0.6rem;
+  margin-top: auto;
+}
+
+.rating p {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.product > h2 {
+  font-size: 1.1rem;
+}

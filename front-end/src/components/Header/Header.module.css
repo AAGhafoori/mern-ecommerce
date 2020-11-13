@@ -1,0 +1,26 @@
+.header {
+  background-color: rgb(48, 48, 48);
+  color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5rem 2rem;
+}
+
+.icons {
+  display: flex;
+}
+
+.icons svg {
+  margin-right: 0.2rem;
+}
+
+.iconsCart {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.iconsSignIn {
+  display: flex;
+  align-items: center;
+}
