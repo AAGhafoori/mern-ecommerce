@@ -7,7 +7,7 @@ const Product = ({ id, image, name, rating, reviews, price }) => {
   return (
     <div className={styles.product}>
       <img src={image} alt='productImage' />
-      <Link to={'/products/' + id}>
+      <Link to={id}>
         <p>{name}</p>
       </Link>
       <div className={styles.rating}>

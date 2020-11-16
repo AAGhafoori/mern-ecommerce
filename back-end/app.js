@@ -4,13 +4,15 @@ import connectMD from './config/db.js';
 import colors from 'colors';
 import productsRoute from './routes/products.js';
 import { errorHandler, notFound } from './controllers/error.js';
+import cors from 'cors';
 
 const app = express();
 
 dotenv.config();
 connectMD();
-const PORT = process.env.PORT || 4000;
 
+const PORT = process.env.PORT || 4000;
+app.use(cors());
 app.use('/api/products', productsRoute);
 
 app.use(notFound);

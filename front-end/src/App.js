@@ -11,8 +11,8 @@ const App = () => {
     <div className={styles.app}>
       <Header />
       <Switch>
-        <Route path='/products/:productId' component={ProductDetails} />
-        <Route path='/products'>
+        <Route path='/:productId' component={ProductDetails} />
+        <Route path='/'>
           <main>
             <h1>LATEST PRODUCTS</h1>
             <Products />

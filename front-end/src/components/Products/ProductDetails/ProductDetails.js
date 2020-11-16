@@ -1,12 +1,17 @@
-import { Rating } from '@material-ui/lab';
-import React from 'react';
+import { Alert, AlertTitle, Rating } from '@material-ui/lab';
+import React, { useEffect } from 'react';
 import styles from './ProductDetails.module.css';
-import productList from '../../../products';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProductDetails } from '../../../actions/productActions';
+import { CircularProgress } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const ProductDetails = ({ match }) => {
-  const product = productList.find(
-    product => product._id === match.params.productId
-  );
+  const dispatch = useDispatch();
+  const productDetails = useSelector(state => state.productDetails);
+  const history = useHistory();
+
+  const { product, loading, error } = productDetails;
   const {
     image,
     name,
@@ -16,9 +21,25 @@ const ProductDetails = ({ match }) => {
     rating,
     numReviews,
   } = product;
-  return (
+
+  useEffect(() => {
+    dispatch(listProductDetails(match.params.productId));
+  }, [dispatch, match]);
+
+  const goBack = () => {
+    history.push('/');
+  };
+
+  const p = loading ? (
+    <CircularProgress />
+  ) : error ? (
+    <Alert severity='error'>
+      <AlertTitle>Error</AlertTitle>
+      {error}
+    </Alert>
+  ) : (
     <div className={styles.productDetails}>
-      <button>GO BACK</button>
+      <button onClick={goBack}>GO BACK</button>
       <div className={styles.main}>
         <img src={image} alt='productImage' />
         <div className={styles.details}>
@@ -44,6 +65,8 @@ const ProductDetails = ({ match }) => {
       </div>
     </div>
   );
+
+  return p;
 };
 
 export default ProductDetails;
